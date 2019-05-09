@@ -5,11 +5,11 @@ import {createStore,applyMiddleware,combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {logger} from './logger';
-import{userReducer} from './reducers';
+import {postReducer,userReducer} from './Reducers';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
 
-const store = createStore(combineReducers({}), applyMiddleware(thunk,logger))
+//const store = createStore(combineReducers({}), applyMiddleware(thunk,logger))
 
 const rootElement=document.getElementById('root');
 ReactDOM.render(

@@ -2,6 +2,8 @@ import React from 'react';
 import {BrowserRouter as Router,Route,withRouter,Redirect,Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 //COMPONENTS NEEDED STILL
+import HomePage from './Components/HomePage/HomePage';
+import RegisterPage from './Components/RegisterPage/RegisterPage';
 
 class App extends React.Component{
   constructor(props){
