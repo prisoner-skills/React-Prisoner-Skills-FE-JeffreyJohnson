@@ -1,26 +1,51 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter as Router,Route,withRouter,Redirect,Switch} from 'react-router-dom';
+import {connect} from 'react-redux';
+//COMPONENTS NEEDED STILL
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component{
+  constructor(props){
+    super(props);
 
+    this.toggle=this.toggle.bind(this);
+    this.state={
+      isOpen: false,
+      isLoggedIn: false,
+    };
+  }
+  componentDidMount=()=>{
+    if(!localStorage.getItem('isLoggedIn')){
+        this.setState({isLoggedIn:false})
+    }
+    else{
+      this.setState({isLoggedIn:true})
+    }
+  }
+  toggle=()=>{
+    this.setState({
+      isOpen:!this.state.isOpen
+    });
+  }
+  render(){
+    return(
+      <div className='Whole'>
+        <div className='Nav'>
+          <Switch>
+            <Route
+              path=''
+              render={()=>(this.state.isLoggedIn===true ? (<Redirect to ='/'/>)
+              :(<RegisterPage/>))}/>
+            <Route path='/register'
+              render={()=>(this.state.isLoggedIn ?(<Redirect to='/'/>):(<HomePage/>))} /> 
+            </Switch>
+        </div>
+        {this.props.isLoggedIn && <HomePage/>}
+
+        <Route exact path="/" component={HomePage}/>
+        <Route exact path="/registerpage" component={RegisterPage}/>
+      </div> 
+    );
+  }
+};
+const mapStateToProps=({isLoggedIn})=>({isLoggedIn})
 export default App;
