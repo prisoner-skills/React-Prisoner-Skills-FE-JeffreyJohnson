@@ -30,7 +30,7 @@ const initialState={
     }
 };
 
-export const userReducer = (state=initialState,action)=>{
+export const usersReducer = (state=initialState,action)=>{
     switch (action.type) {
         case SIGNUP_USER_START:
         return {

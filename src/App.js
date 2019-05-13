@@ -2,8 +2,9 @@ import React from 'react';
 import {BrowserRouter as Router,Route,withRouter,Redirect,Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 //COMPONENTS NEEDED STILL
-import HomePage from './Components/HomePage/HomePage';
-import RegisterPage from './Components/RegisterPage/RegisterPage';
+import HomePage from './components/HomePage/HomePage';
+import RegisterPage from './components/RegisterPage/RegisterPage';
+import Login from './components/Login/Login';
 
 class App extends React.Component{
   constructor(props){
@@ -32,18 +33,20 @@ class App extends React.Component{
     return(
       <div className='Whole'>
         <div className='Nav'>
-          <Switch>
-            <Route
-              path=''
-              render={()=>(this.state.isLoggedIn===true ? (<Redirect to ='/'/>)
-              :(<RegisterPage/>))}/>
-            <Route path='/register'
-              render={()=>(this.state.isLoggedIn ?(<Redirect to='/'/>):(<HomePage/>))} /> 
-            </Switch>
+        <Switch>
+              <Route
+                 path='login'
+                 render={() => (this.state.isLoggedIn === true
+                 ? (<Redirect to='/'/>)
+                 : (<Login/>))}/>
+                 <Route path='/signup'
+                 render={() => (this.state.isLoggedIn ? (<Redirect to='/login' />) : (<HomePage />))} />
+          </Switch>
         </div>
         {this.props.isLoggedIn && <HomePage/>}
 
         <Route exact path="/" component={HomePage}/>
+        <Route path="/login" component={Login}/>
         <Route exact path="/registerpage" component={RegisterPage}/>
       </div> 
     );
