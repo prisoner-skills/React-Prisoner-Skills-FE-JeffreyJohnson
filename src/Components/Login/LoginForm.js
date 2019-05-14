@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../NavBar/NavBar';
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -21,7 +22,9 @@ class LoginForm extends React.Component{
     render(){
         const{username,password,isLoading}=this.state;
         return(
+            
             <form>
+                <div><NavBar/></div>
                 <h1>Login</h1>
                 <input onSubmit={this.onSubmit} type='text'name='username'className='LogInput'/>
                 <input type='password'className='PassInput'/>

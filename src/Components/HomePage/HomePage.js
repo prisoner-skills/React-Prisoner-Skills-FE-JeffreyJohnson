@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connsect} from 'react-redux';
 import{Route,Link,Redirect} from 'react-router-dom';
+import NavBar from '../NavBar/NavBar';
 
 class HomePage extends React.Component{
   state={
@@ -17,7 +18,9 @@ class HomePage extends React.Component{
     }
     render(){
         return(
+            
             <div className="HomePage">
+            <NavBar/>
                 {this.state.loading||!this.state.person?(
                     <div>Loading...</div>
                 ):(

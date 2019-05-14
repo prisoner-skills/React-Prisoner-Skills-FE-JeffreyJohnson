@@ -32,10 +32,8 @@ class App extends React.Component{
   render(){
     return(
       <div className='Whole'>
-        <div className='Nav'>
-        nav component eventually
-        </div>
-        <Route exact path="/" component={HomePage}/>
+        
+        <Route exact path="/HomePage" component={HomePage}/>
         <Route path="/login" component={Login}/>
         <Route exact path="/registerpage" component={RegisterPage}/>
       </div> 
