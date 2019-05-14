@@ -1,14 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import{Route,Link} from 'react-router-dom';
+import RegisterForm from './RegisterForm';
+import NavBar from '../NavBar/NavBar';
 
 class RegisterPage extends React.Component{
     render(){
         return(
-            <div className="RegisterPage">
-                <p>register</p>
+            <div className='row'>
+                <div className='offset'>
+                
+                <RegisterForm/>
+                </div>
             </div>
-        )
+        );
     }
 }
-export default <RegisterPage/>
+export default RegisterPage;

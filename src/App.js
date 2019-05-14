@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import HomePage from './components/HomePage/HomePage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import Login from './components/Login/Login';
+import AdminPage from './components/AdminPage/AdminPage';
 
 class App extends React.Component{
   constructor(props){
@@ -36,6 +37,8 @@ class App extends React.Component{
         <Route exact path="/HomePage" component={HomePage}/>
         <Route path="/login" component={Login}/>
         <Route exact path="/registerpage" component={RegisterPage}/>
+        <Route exact path="/AdminPage" component={AdminPage}/>
+        
       </div> 
     );
   }
