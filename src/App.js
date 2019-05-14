@@ -33,18 +33,8 @@ class App extends React.Component{
     return(
       <div className='Whole'>
         <div className='Nav'>
-        <Switch>
-              <Route
-                 path='login'
-                 render={() => (this.state.isLoggedIn === true
-                 ? (<Redirect to='/'/>)
-                 : (<Login/>))}/>
-                 <Route path='/signup'
-                 render={() => (this.state.isLoggedIn ? (<Redirect to='/login' />) : (<HomePage />))} />
-          </Switch>
+        nav component eventually
         </div>
-        {this.props.isLoggedIn && <HomePage/>}
-
         <Route exact path="/" component={HomePage}/>
         <Route path="/login" component={Login}/>
         <Route exact path="/registerpage" component={RegisterPage}/>
