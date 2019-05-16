@@ -6,29 +6,27 @@ export default class RegisterPrisoner extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
-      address: '',
       name: '',
-      password: '',
+      prison_id: '',
+      canHaveWorkLeave:''
     }
   }
-
-  addPrison = e => {
+  
+  addPrisoner = e => {
     e.preventDefault()
 
-    const { username, address, name, password } = this.state
+    const { name,prison_id,canHaveWorkLeave } = this.state
 
     axios.post(`${DATA}/auth/register`, {
-      username,
-      address,
       name,
-      password,
+      prison_id,
+      canHaveWorkLeave,
+
     })
     this.setState({
-      username: '',
-      address: '',
-      name: '',
-      password: '',
+      name:'',
+      prison_id:'',
+      canHaveWorkLeave:''
     })
   }
 
@@ -37,16 +35,12 @@ export default class RegisterPrisoner extends Component {
   }
 
   render() {
-    const { username, address, name, password } = this.state
+    const { name,prison_id,canHaveWorkLeave } = this.state
     return (
-      <form onSubmit={this.addPrison}>
-        <input name='username'type='text'placeholder='username'value={username}onChange={this.handleChange}/>
-
-        <input name='address'type='text'placeholder='address'value={address}onChange={this.handleChange}/>
-
-        <input name='name'type='text'placeholder='name'value={name}onChange={this.handleChange}/>
-
-        <input name='password'type='password'placeholder='password'value={password}onChange={this.handleChange}/>
+      <form onSubmit={this.addPrisoner}>
+        <input name='name'type='text'placeholder='Prisoner Name'value={name}onChange={this.handleChange}/>
+        <input prison_id='prison_id'type='nunmber'placeholder='Prison Id'value={prison_id}onChange={this.handleChange}/>
+        <input canHaveWorkLeave='canHaveWorkLeave'type='text'placeholder='canHaveWorkLeave?'value={canHaveWorkLeave}onChange={this.handleChange}/>
         
         <button type='submit'>Register New Prisoner</button>
       </form>

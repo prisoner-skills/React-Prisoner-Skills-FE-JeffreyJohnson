@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { DATA } from '../../data'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import '../prisonlist.css'
 
 export default class PrisonPage extends Component {
   state = {
@@ -22,13 +24,16 @@ export default class PrisonPage extends Component {
     const {prisons}=this.state
     if(prisoners.prison_id===prisons.id){
     return (
-      <div><h1>rnder</h1>
+      <div><h1>this should only be prisoners who belong to a specific prison =/</h1>
         <ul>
           {prisoners.map((prisoners, i) => (
-              <div key={i}>
-              
-            <li >{prisoners.name}</li>
-            <li >{prisoners.prison_id}</li>
+              <div className='PrisonGroup' key={i}>
+              <h1>name:</h1>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.name}</Link>
+              <h1>id:</h1>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.id}</Link>
+              <h1>prison id:</h1>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.prison_id}</Link>
             </div>
           ))}
         </ul>

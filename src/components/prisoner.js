@@ -19,7 +19,7 @@ export default class Prisoner extends Component {
      const {prisoners}=this.state
      return (
         <div>
-            <h1>render</h1>
+            <h1>this should only be prisoner at a specific id=/ </h1>
           <ul>
             {prisoners.map((prisoners, i) => (
                 <div key={i}>

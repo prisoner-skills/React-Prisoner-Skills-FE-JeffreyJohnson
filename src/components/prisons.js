@@ -5,23 +5,24 @@ import {Link} from 'react-router-dom';
 import './prisonlist.css';
 
 export default class Prisons extends Component {
-   //state = {
-       // prisons: [],
-      //}
-  //componentDidMount() {
-    //axios
-     // .get(`${DATA}/prisons`)
-      //.then(({ data }) => this.setState({ prisons: data }))
-  //}
+   state = {
+        prisons: [],
+      }
+  componentDidMount() {
+    axios
+      .get(`${DATA}/prisons`)
+      .then(({ data }) => this.setState({ prisons: data }))
+  }
     //render() {
     //return <div>{JSON.stringify(this.state)}</div>
   //}
   render() {
-    //const { prisons } = this.state
+    const { prisons } = this.state
 
     return (
+      
      <div>
-        {/*<div className='WholeList'  >
+        <div className='WholeList'  >
           {prisons.map((prison, i) => (
             <div key={i} className='PrisonGroup' >
             
@@ -35,8 +36,11 @@ export default class Prisons extends Component {
             </div>
             
           ))}
-          </div>*/}{this.props.prisons}
+          </div>
+          
       </div>
+      
  )
+ console.log(this.props.data)
   }
 }

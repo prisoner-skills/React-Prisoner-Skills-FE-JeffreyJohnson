@@ -11,6 +11,6 @@ export function allData(){
 export function allData(api){
     return{
         type:'ALL_DATA',
-        color:color
+        data:[]
     }
 }

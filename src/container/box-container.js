@@ -1,12 +1,12 @@
 import react from 'react';
 import {connect}from 'react-redux';
 import * as actionCreators from '../actions/index.js';
-import Prisons from '../components/prisons.js';
+import App from '../App.js';
 
 class BoxCon extends React.Component{
     render(){
         return(
-            <Prisons prison={this.props.prisons}></Prisons>
+            <App data={this.props.allData}></App>
         )
     }
 }

@@ -8,7 +8,7 @@ import HomePage from './components/HomePage/Home';
 import Prison from './components/prison';
 import LoginControl from './components/login/LoginControl';
 import Prisoner from './components/prisoner';
-
+import RegisterPrisoner from './components/auth/registerprisoner';
 class App extends React.Component {
  
   render() {
@@ -16,6 +16,7 @@ class App extends React.Component {
       <div className='App'>
         <Navigation />
         <Register />
+        <RegisterPrisoner/>
         <LoginControl/>
         <Switch>
         <Route exact path='/'component={Prisons} />
