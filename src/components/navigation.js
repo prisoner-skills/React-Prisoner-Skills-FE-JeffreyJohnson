@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './navigation.css';
 
 function Navigation(){
   return(
-    <nav>
+    <nav className='NavBar'>
       <h3>logo</h3>
       <Link to='prisons'>
         <li>Prisons</li>

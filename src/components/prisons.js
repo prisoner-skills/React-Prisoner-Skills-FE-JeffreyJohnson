@@ -2,6 +2,7 @@ import React, {useState,useEffect, Component } from 'react'
 import axios from 'axios'
 import {DATA} from '../data';
 import {Link} from 'react-router-dom';
+import './prisonlist.css';
 
 export default class Prisons extends Component {
     state = {
@@ -20,16 +21,16 @@ export default class Prisons extends Component {
 
     return (
      <div>
-        <div >
+        <div className='WholeList'  >
           {prisons.map((prison, i) => (
-            <div key={i}>
+            <div key={i} className='PrisonGroup' >
             
-            <li>
-            <Link to={`/prisons/${prison.id}`}>{prison.name}</Link>
+            <li className='PrisonLink'>
+            <Link className='PrisonList' to={`/prisons/${prison.id}`}>{prison.name}</Link>
             </li>
             
-            <Link>
-            <li>{prison.address}</li>
+            <Link className='PrisonList' to={`/prisons/${prison.id}`}>
+            <li className='PrisonLink'>{prison.address}</li>
             </Link>
             </div>
             

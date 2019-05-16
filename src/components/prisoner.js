@@ -4,26 +4,24 @@ import axios from 'axios'
 import PrisonPage from './prison/prisonpage'
 import NoWorkers from './prison/noworkers'
 
-export default class Prison extends Component {
-  state = {
-    prisoners: [],
-    prisons:[]
-  }
-
-  componentDidMount() {
-    Promise.all([
-      axios.get(`${DATA}/prisoners`),
-      axios.get(`${DATA}/prisons`)
-    ])
-    .then(([data])=>{
-      this.setState({prisoners:data,prisons:data})
-    });
-      
-      
-  }
+export default class Prisoner extends Component {
+    state = {
+        prisoners: [],
+      }
+    
+      componentDidMount() {
+        axios
+          .get(`${DATA}/prisoners`)
+          .then(({ data }) => this.setState({ prisoners: data }))
+      }
   
- 
-  render() {
+ render(){
+     const prisoners=this.state
+     return(
+         <div>{prisoners.name}</div>
+     )
+ }
+ /* render() {
     let page;
     const { prisoners } = this.state
     const {prisons}=this.state
@@ -36,5 +34,5 @@ return (
     <div>{page}</div>
       
         ) 
-  }
+  }*/
 }

@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import {DATA } from '../data'
 import axios from 'axios'
+import {Link}from 'react-router-dom'
 
 export default class Prisoners extends Component {
   state = {
@@ -22,7 +23,9 @@ export default class Prisoners extends Component {
         <ul>
           {prisoners.map((prisoners, i) => (
               <div key={i}>
-            <li >{prisoners.name}</li>
+             <li>
+            <Link to={`/prisoner/${prisoners.id}`}>{prisoners.name}</Link>
+            </li>
             <li >{prisoners.prison_id}</li>
             </div>
           ))}
