@@ -70,3 +70,4 @@ export const Data=()=>dispatch=>{
         }
     });
 };
+export default Data;

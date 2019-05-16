@@ -1,47 +1,29 @@
 import React from 'react';
-import {BrowserRouter as Router,Route,withRouter,Redirect,Switch} from 'react-router-dom';
-import {connect} from 'react-redux';
-//COMPONENTS NEEDED STILL
-import HomePage from './components/HomePage/HomePage';
-import RegisterPage from './components/RegisterPage/RegisterPage';
-import Login from './components/Login/Login';
-import AdminPage from './components/AdminPage/AdminPage';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import Register from './components/auth/register';
+import Prisons from './components/prisons';
+import Prisoners from './components/prisoners';
+import Navigation from './components/navigation.js';
+import HomePage from './components/HomePage/Home';
+import Prison from './components/prison';
+import LoginControl from './components/login/LoginControl';
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-
-    this.toggle=this.toggle.bind(this);
-    this.state={
-      isOpen: false,
-      isLoggedIn: false,
-    };
-  }
-  componentDidMount=()=>{
-    if(!localStorage.getItem('isLoggedIn')){
-        this.setState({isLoggedIn:false})
-    }
-    else{
-      this.setState({isLoggedIn:true})
-    }
-  }
-  toggle=()=>{
-    this.setState({
-      isOpen:!this.state.isOpen
-    });
-  }
-  render(){
-    return(
-      <div className='Whole'>
-        
-        <Route exact path="/HomePage" component={HomePage}/>
-        <Route path="/login" component={Login}/>
-        <Route exact path="/registerpage" component={RegisterPage}/>
-        <Route exact path="/AdminPage" component={AdminPage}/>
-        
-      </div> 
+class App extends React.Component {
+ 
+  render() {
+    return (
+      <div className='App'>
+        <Navigation />
+        <Register />
+        <LoginControl/>
+        <Switch>
+        <Route exact path='/prisons'component={Prisons} />
+        <Route exact path='/prisoners'component={Prisoners} />
+        <Route path='/prisons/:id'component={Prison}/>
+        </Switch>
+      </div>
     );
   }
 };
-const mapStateToProps=({isLoggedIn})=>({isLoggedIn})
+
 export default App;
