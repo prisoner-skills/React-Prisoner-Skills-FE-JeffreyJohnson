@@ -5,10 +5,10 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import {createStore,applyMiddleware,combineReducers}from'redux';
 import {Provider}from'react-redux';
 import thunk from 'redux-thunk';
-import {postsReducer,usersReducer}from'./reducers/index';
+import reducers from'./reducers/index.js';
 import {logger} from './logger';
 
-const store = createStore(combineReducers({postsReducer, usersReducer}), applyMiddleware(thunk, logger));
+let store = createStore(reducers,applyMiddleware(thunk))
 ReactDOM.render(
 <Provider store={store}>
         <Router>
