@@ -26,10 +26,10 @@ export default class Prisons extends Component {
             <div key={i} className='PrisonGroup' >
             
             <li className='PrisonLink'>
-            <Link className='PrisonList' to={`/prisons/${prison.id}`}>{prison.name}</Link>
+            <Link className='PrisonList' to={`/prison/${prison.id}`}>{prison.name}</Link>
             </li>
             
-            <Link className='PrisonList' to={`/prisons/${prison.id}`}>
+            <Link className='PrisonList' to={`/prison/${prison.id}`}>
             <li className='PrisonLink'>{prison.address}</li>
             </Link>
             </div>

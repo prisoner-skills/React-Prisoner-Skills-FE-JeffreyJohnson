@@ -20,7 +20,7 @@ class App extends React.Component {
         <Switch>
         <Route exact path='/'component={Prisons} />
         <Route exact path='/prisoners'component={Prisoners} />
-        <Route path='/prison/:id'component={Prison}/>
+        <Route path={`/prison/:id`}component={Prison}/>
         <Route path='/prisoner/:id'component={Prisoner}/>
         </Switch>
       </div>

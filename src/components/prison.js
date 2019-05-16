@@ -15,10 +15,11 @@ export default class Prison extends Component {
       axios.get(`${DATA}/prisoners`),
       axios.get(`${DATA}/prisons`)
     ])
+    
     .then(([data])=>{
       this.setState({prisoners:data,prisons:data})
     });
-      
+    console.log(DATA); 
       
   }
   
@@ -27,7 +28,7 @@ export default class Prison extends Component {
     let page;
     const { prisoners } = this.state
     const {prisons}=this.state
-if(prisoners.prison_id===prisons.id){
+if(prisons.id===prisoners.id){
     page=<PrisonPage/>
 }else{
     page=<NoWorkers/>

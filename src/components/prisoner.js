@@ -16,10 +16,20 @@ export default class Prisoner extends Component {
       }
   
  render(){
-     const prisoners=this.state
-     return(
-         <div>{prisoners.name}</div>
-     )
+     const {prisoners}=this.state
+     return (
+        <div>
+            <h1>render</h1>
+          <ul>
+            {prisoners.map((prisoners, i) => (
+                <div key={i}>
+              <li >{prisoners.name}</li>
+              <li >{prisoners.prison_id}</li>
+              </div>
+            ))}
+          </ul>
+        </div>
+      )
  }
  /* render() {
     let page;
