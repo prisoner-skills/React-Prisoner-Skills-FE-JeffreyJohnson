@@ -6,12 +6,12 @@ import Prisons from '../components/prisons.js';
 class BoxCon extends React.Component{
     render(){
         return(
-            <Prisons prison={this.props.prisons.name}></Prisons>
+            <Prisons prison={this.props.prisons}></Prisons>
         )
     }
 }
 
-const mapStateToProps={state}=>{
+const mapStateToProps=(state)=>{
     return state
 };
 export default connect (mapStateToProps,actionCreators)(BoxCon)

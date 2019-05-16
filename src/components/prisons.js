@@ -35,7 +35,7 @@ export default class Prisons extends Component {
             </div>
             
           ))}
-          </div>*/}{this.props.prisons.name}
+          </div>*/}{this.props.prisons}
       </div>
  )
   }
