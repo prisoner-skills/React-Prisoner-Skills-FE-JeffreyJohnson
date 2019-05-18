@@ -5,35 +5,51 @@ import {Link} from 'react-router-dom'
 import '../prisonlist.css'
 
 export default class PrisonPage extends Component {
-  state = {
-    prisoners: [],
-    prisons:[]
+  constructor(){
+    super();
+    this.state={
+      prisons:[],
+      prisoners:[]
+    };
   }
 
   componentDidMount() {
-    axios
-      .get(`${DATA}/prisoners`)
-      .then(({ data }) => this.setState({ prisoners: data }))
-    axios
-      .get(`${DATA}/prisons`)
-      .then(({data})=>this.setState({prisons:data}))
+    axios.all([
+      axios.get(`${DATA}/prisoners`),
+      axios.get(`${DATA}/prisons`)
+    ])
+  
+    .then(axios.spread((prisons,prisoners)=>{
+      this.setState({
+        
+        prisons:prisons.data,
+        prisoners:prisoners.data,
+      })
+      console.log(this.state.prisoners)
+      console.log(this.state.prisons)
+    }));
+    
+   
+      
   }
  
   render() {
-    const { prisoners } = this.state
+    const {prisoners} =this.state
     const {prisons}=this.state
-    if(prisoners.prison_id===prisons.id){
+   
+    
+    if(this.state.prison_id===this.state.id){
     return (
       <div><h1>this should only be prisoners who belong to a specific prison =/</h1>
         <ul>
           {prisoners.map((prisoners, i) => (
               <div className='PrisonGroup' key={i}>
               <h1>name:</h1>
-              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.name}</Link>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{}</Link>
               <h1>id:</h1>
-              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.id}</Link>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisons.id}</Link>
               <h1>prison id:</h1>
-              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.prison_id}</Link>
+              <Link className='PrisonList' to={`/prisoner/${prisoners.id}`}>{prisoners.name}</Link>
             </div>
           ))}
         </ul>

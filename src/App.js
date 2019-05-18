@@ -9,6 +9,7 @@ import Prison from './components/prison';
 import LoginControl from './components/login/LoginControl';
 import Prisoner from './components/prisoner';
 import RegisterPrisoner from './components/auth/registerprisoner';
+import PrisonPage from './components/prison/prisonpage';
 class App extends React.Component {
  
   render() {
@@ -18,12 +19,12 @@ class App extends React.Component {
         <Register />
         <RegisterPrisoner/>
         <LoginControl/>
-        <Switch>
+        
         <Route exact path='/'component={Prisons} />
         <Route exact path='/prisoners'component={Prisoners} />
-        <Route path={`/prison/:id`}component={Prison}/>
+        <Route path='/prison/:id'component={PrisonPage}/>
         <Route path='/prisoner/:id'component={Prisoner}/>
-        </Switch>
+        
       </div>
     );
   }

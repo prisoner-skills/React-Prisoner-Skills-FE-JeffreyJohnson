@@ -11,14 +11,14 @@ export default class Prison extends Component {
   }
 
   componentDidMount() {
-    Promise.all([
+    axios.all([
       axios.get(`${DATA}/prisoners`),
       axios.get(`${DATA}/prisons`)
     ])
-    
-    .then(([data])=>{
-      this.setState({prisoners:data,prisons:data})
-    });
+  
+    .then(axios.spread((prisonRes,prisonersRes)=>{
+      this.setState({prisonRes,prisonersRes})
+    }));
     console.log(DATA); 
       
   }
@@ -26,8 +26,10 @@ export default class Prison extends Component {
  
   render() {
     let page;
-    const { prisoners } = this.state
+    const  {prisoners}  = this.state
     const {prisons}=this.state
+    
+    console.log(prisons)
 if(prisons.id===prisoners.id){
     page=<PrisonPage/>
 }else{

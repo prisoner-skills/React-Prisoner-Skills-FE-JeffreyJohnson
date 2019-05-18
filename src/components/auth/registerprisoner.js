@@ -17,7 +17,7 @@ export default class RegisterPrisoner extends Component {
 
     const { name,prison_id,canHaveWorkLeave } = this.state
 
-    axios.post(`${DATA}/auth/register`, {
+    axios.post(`${DATA}/auth/register/prisoner`, {
       name,
       prison_id,
       canHaveWorkLeave,
@@ -39,8 +39,8 @@ export default class RegisterPrisoner extends Component {
     return (
       <form onSubmit={this.addPrisoner}>
         <input name='name'type='text'placeholder='Prisoner Name'value={name}onChange={this.handleChange}/>
-        <input prison_id='prison_id'type='nunmber'placeholder='Prison Id'value={prison_id}onChange={this.handleChange}/>
-        <input canHaveWorkLeave='canHaveWorkLeave'type='text'placeholder='canHaveWorkLeave?'value={canHaveWorkLeave}onChange={this.handleChange}/>
+        <input prison_id='prison_id'type='text'placeholder='Prison Id'value={prison_id}onChange={this.handleChange}/>
+        <input canhaveworkleave='canHaveWorkLeave'type='text'placeholder='canHaveWorkLeave?'value={canHaveWorkLeave}onChange={this.handleChange}/>
         
         <button type='submit'>Register New Prisoner</button>
       </form>
