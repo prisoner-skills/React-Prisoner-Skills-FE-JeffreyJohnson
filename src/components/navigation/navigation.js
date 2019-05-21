@@ -6,10 +6,10 @@ function Navigation(){
   return(
     <nav className='NavBar'>
       <h3>logo</h3>
-      <Link to='prisons'>
+      <Link to='/prisons'>
         <li>Prisons</li>
       </Link>
-      <Link to='prisoners'>
+      <Link to='/prisoners'>
         <li>Prisoners</li>
       </Link>
     </nav>

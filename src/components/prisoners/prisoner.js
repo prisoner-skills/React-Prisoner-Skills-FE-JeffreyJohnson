@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { DATA } from '../data'
+import { DATA } from '../../data'
 import axios from 'axios'
-import PrisonPage from './prison/prisonpage'
-import NoWorkers from './prison/noworkers'
+import PrisonPage from '../prison/prisonpage'
+import NoWorkers from '../prison/noworkers'
 
 export default class Prisoner extends Component {
     state = {

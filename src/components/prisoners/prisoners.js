@@ -1,6 +1,6 @@
     
 import React, { Component } from 'react'
-import {DATA } from '../data'
+import {DATA } from '../../data'
 import axios from 'axios'
 import {Link}from 'react-router-dom'
 

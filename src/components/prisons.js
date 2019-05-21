@@ -2,7 +2,7 @@ import React, {useState,useEffect, Component } from 'react'
 import axios from 'axios'
 import {DATA} from '../data';
 import {Link} from 'react-router-dom';
-import './prisonlist.css';
+import './prison/prisonlist.css';
 
 export default class Prisons extends Component {
    state = {
