@@ -1,0 +1,20 @@
+.PrisonList{
+   display: flex;
+   font-size:20px;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   color:black;
+   margin-top:25px;
+   margin-bottom:25px;
+   text-decoration: none;
+   
+}
+.PrisonLink{
+    list-style-type:none;
+
+}
+.PrisonGroup{
+    display:flex;
+    justify-content: space-around;
+    text-align: center;
+    border-bottom:1px solid black;
+}
