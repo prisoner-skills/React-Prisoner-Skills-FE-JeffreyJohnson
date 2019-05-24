@@ -1,17 +1,6 @@
-let defaultState={
-    allData:[]
-}
-const mainReducer=(state=defaultState,action)=>{
-    if(action.type==='ALL_DATA'){
-        return{
-            ...state,
-            allData:action.data
-        }
-    }else{
-            return{
-                ...state
-            }
-        }
-    }
-
-export default mainReducer;
+import { combineReducers } from 'redux';
+import { dataReducer } from './dataReducer';
+const rootReducer =combineReducers({
+  dataReducer
+});
+export default rootReducer;
