@@ -1,23 +1,97 @@
 import axios from 'axios';
 
+export const LOGIN_START='LOGIN_START';
+export const LOGIN_SUCCESS='LOGIN_SUCCESS';
+export const LOGIN_FAILURE='LOGIN_FAILURE';
 
-export const FETCHING_DATA='FETCHING_DATA';
-export const FETCHING_DATA_SUCCESS='FETCHING_DATA_SUCCESS';
-export const FETCHING_DATA_FAILURE='FETCHING_DATA_FAILURE';
-export const ERROR='ERROR';
+export const LOGOUT_START = 'LOGOUT_START';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 
-export const getPrisons=()=>{
-    const prisons=axios.get('https://prison-skills.herokuapp.com')
-   return dispatch=>{
-       dispatch({ type:FETCHING_DATA})
-       prisons
+export const login=creds=>dispatch=>{
+    dispatch({type:LOGIN_START});
+    return axios
+            .post('',creds)
+            .then(res=>{
+                console.log(res.data);
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('username', creds.username);
+                localStorage.setItem('isLoggedIn', true)
+                dispatch({type: LOGIN_SUCCESS, payload: res.data})
+            })
+            .catch(err=>dispatch({type: LOGIN_FAILURE, payload: err})
+            );
+};
+
+export const logout=()=>dispatch=>{
+    dispatch({type:LOGOUT_START})
+        axios.get('')
         .then(res=>{
-            dispatch({type:FETCHING_DATA_SUCCESS,payload:res.data})
+            localStorage.removeItem('isLoggedIn')
+            window.location.reload();
+            dispatch({type:LOGOUT_SUCCESS,payload:res.data})
         })
-        .catch(err=>{
-            dispatch({type:ERROR,payload:err})
-        })
-   }
+        .catch(err=>dispatch({type:LOGOUT_FAILURE,payload:err}))
 }
+
+export const SIGNUP_USER_START = 'SIGNUP_USER_START';
+export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
+export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
+
+export const signUp=creds=>dispatch=>{
+    dispatch({type:SIGNUP_USER_START})
+    axios.post('',creds)
+    .then(res=>dispatch({type:SIGNUP_USER_SUCCESS,payload:res.data}))
+    .catch(err=>dispatch({type:SIGNUP_USER_FAILURE,payload:err}))
+};
+
+export const FETCH_DATA_START = 'FETCH_DATA_START';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+export const USER_UNAUTHORIZED = 'FETCH_DATA_FAILURE';
+
+export const getPrisons=()=>dispatch=>{
+    dispatch({type:FETCH_DATA_START})
+    axios.get('https://prison-skills.herokuapp.com/prisons',{
+        headers:{
+            Authorization:localStorage.getItem('token')
+        }
+    })
+    .then(res=>{
+        console.log(res);
+        dispatch({type:FETCH_DATA_SUCCESS,payload:res.data})
+    })
+    .catch(err=>{
+        console.log(err);
+        if(err.response.status===403){
+            dispatch({type:USER_UNAUTHORIZED,payload:err.response})
+        }else{
+            dispatch({type:FETCH_DATA_FAILURE, payload: err.response})
+        }
+    });
+};
+export const FETCH_PRISONER_START='FETCH_PRISONER_START';
+export const FETCH_PRISONER_SUCCESS='FETCH_PRISONER_SUCCESS';
+export const FETCH_PRISONER_FAILURE='FETCH_PRISONER_FAILURE';
+export const getPrisoners=()=>dispatch=>{
+    dispatch({type:FETCH_PRISONER_START})
+    axios.get('https://prison-skills.herokuapp.com/prisoners',{
+        headers:{
+            Authorization:localStorage.getItem('token')
+        }
+    })
+    .then(res=>{
+        console.log(res);
+        dispatch({type:FETCH_PRISONER_SUCCESS,payload:res.data})
+    })
+    .catch(err=>{
+        console.log(err);
+        if(err.response.status===403){
+            dispatch({type:USER_UNAUTHORIZED,payload:err.response})
+        }else{
+            dispatch({type:FETCH_PRISONER_FAILURE, payload: err.response})
+        }
+    });
+};
 
 

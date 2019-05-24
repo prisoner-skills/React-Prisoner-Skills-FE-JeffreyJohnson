@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { dataReducer } from './dataReducer';
+import  prisonsReducer  from './prisonsReducer';
+import prisonersReducer from './prisonerReducer';
 const rootReducer =combineReducers({
-  dataReducer
+  prisoners:prisonersReducer,
+  prisons:prisonsReducer
 });
 export default rootReducer;

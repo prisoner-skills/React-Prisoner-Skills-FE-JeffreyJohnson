@@ -1,10 +1,36 @@
-import React from 'react';
+import React,{Component} from 'react';
+import{connect} from 'react-redux';
 
-function PrisonContainer(props){
-    return(
-        <div className='Prisons'>
-            <p>{props.name}</p>
-        </div>
-    )
+
+
+class PrisonContainer extends Component{
+    createListItems(){
+        return this.props.prisons.map((prison)=>{
+            return(
+                <li key="prison.id">{prison.name} {prison.address}</li>
+                
+            )
+        })
+    }
+    render(){
+        return(
+            <div>
+            <ul>
+                1
+            </ul>
+            </div>
+        );
+    }
 }
-export default PrisonContainer;
+
+function mapStateToProps(state){
+    return{
+        prisons:state.prisons
+    }
+}
+
+
+
+
+
+export default connect(mapStateToProps)(PrisonContainer);
